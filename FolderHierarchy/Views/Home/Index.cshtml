@@ -1,0 +1,28 @@
+﻿@using FolderHierarchy.Models;
+
+@model FolderViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    var error = ViewData["Error"] as string;
+}
+
+@if (string.IsNullOrEmpty(error))
+{
+    <div>
+        <h3>"Folder" - @Model.Name</h3>
+    </div>
+
+    <div>
+        @foreach (var url in Model.ChildFolderUrls)
+        {
+            <a href="@url.Url">@url.Name</a><br>
+        }
+    </div>
+}
+else
+{
+    <div>
+        @error
+    </div>
+}
